@@ -47,6 +47,7 @@ const popularDirectors = [
     const mainContainer = document.querySelector('.main-container');
     popularDirectors.forEach((director) => {
       const infoBox = document.createElement('div');
+      infoBox.classList.add('info-box');
       infoBox.innerHTML = `
       <h3>${director["name"]}</h3>
       <p>${director["career"]}</p>
@@ -60,8 +61,9 @@ const popularDirectors = [
   const addAdditionalInfoToPage = () => {
     const smallContainer = document.querySelector('.small-container');
     const topFilmsList = popularDirectors.map((director)=>{return director["top_rated_film"]});
+    
     const filmsParagraph = document.createElement('p');
-    filmsParagraph.textContent = `${topFilmsList.join(', ')}.`;
+    filmsParagraph.textContent = `${topFilmsList.join(',\n')}.`;
     smallContainer.append(filmsParagraph);
 
   };
