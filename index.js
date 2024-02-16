@@ -63,7 +63,7 @@ const popularDirectors = [
     const topFilmsList = popularDirectors.map((director)=>{return director["top_rated_film"]});
     
     const filmsParagraph = document.createElement('p');
-    filmsParagraph.textContent = `${topFilmsList.join(',\n')}.`;
+    filmsParagraph.textContent = `${topFilmsList.join(',\n')}.`; //почему не работает перенос строки \n ?
     smallContainer.append(filmsParagraph);
 
   };
