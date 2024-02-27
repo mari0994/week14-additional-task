@@ -48,11 +48,23 @@ const popularDirectors = [
     popularDirectors.forEach((director) => {
       const infoBox = document.createElement('div');
       infoBox.classList.add('info-box');
+
       infoBox.innerHTML = `
       <h3>${director["name"]}</h3>
       <p>${director["career"]}</p>
       <a href="${director["films"]}">Фильмография</a>
       `;
+
+      //или использовтаь точечную нотацию
+      // const directorName = document.createElement('h3');
+      // directorName.textContent = director.name;
+      // const directorCareer = document.createElement('p');
+      // directorCareer.textContent = director.career;
+      // const directorFilmsLink = document.createElement('a');
+      // directorFilmsLink.href = director.films;
+      // directorFilmsLink.textContent = 'Фильмография';
+      // infoBox.append(directorName, directorCareer, directorFilmsLink);
+
       mainContainer.append(infoBox);
     });
   };
@@ -60,11 +72,22 @@ const popularDirectors = [
 
   const addAdditionalInfoToPage = () => {
     const smallContainer = document.querySelector('.small-container');
-    const topFilmsList = popularDirectors.map((director)=>{return director["top_rated_film"]});
-    
-    const filmsParagraph = document.createElement('p');
-    filmsParagraph.textContent = `${topFilmsList.join(',\n')}.`; //почему не работает перенос строки \n ?
-    smallContainer.append(filmsParagraph);
 
+    // const topFilmsList = popularDirectors.map((director)=>{return director["top_rated_film"]});
+    
+    // const filmsParagraph = document.createElement('p');
+    // filmsParagraph.textContent = `${topFilmsList.join(', ')}.`;
+    // smallContainer.append(filmsParagraph);
+
+    //или добавить лист
+  const listElement = document.createElement('ul');
+  popularDirectors.forEach((director) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = director.top_rated_film;
+    listElement.append(listItem);
+  });
+  smallContainer.append(listElement);
   };
+
+
   addAdditionalInfoToPage();
